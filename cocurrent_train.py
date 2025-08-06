@@ -46,7 +46,7 @@ def stack_frames(stack_frame, frame, is_new_episode):
     # 返回堆叠的状态
     stacked_state = np.stack(stack_frame, axis=0)
     return stacked_state, stack_frame
-num_env = 2
+num_env = 6
 # 环境设置向量化
 env = SyncVectorEnv([make_env("ALE/Pong-v5", seed=i) for i in range(num_env)])
 #obs, _ = env.reset()
@@ -57,7 +57,7 @@ print(f"使用设备: {device}")
 action_dim = env.single_action_space.n
 lr = 1e-4  # 降低学习率
 gamma = 0.99
-num_episodes = 1500 # 增加训练轮数
+num_episodes = 1000 # 增加训练轮数
 start_epsilon = 1.0
 epsilon_decay = 0.00005  # 修正epsilon衰减
 final_epsilon = 0.05
